@@ -132,9 +132,12 @@ public class AutomationMainTest {
         
         System.out.println("Found YouTube Video Link: " + youtubeLink.getAttribute("href"));
         
+        // Simulate user processing/reading the result
+        sleep(2000);
+
         // Scroll element into view to handle "ElementClickIntercepted" error
         ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", youtubeLink);
-        sleep(1000); // Wait for scrolling to settle
+        sleep(1500); // Wait for scrolling to settle
         
         // Attempt to click the link
         try {
@@ -148,6 +151,9 @@ public class AutomationMainTest {
         // Wait for the video player to load (ID 'movie_player' is standard on YouTube)
         WebElement videoPlayer = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("movie_player")));
         
+        // Simulate user getting ready to watch
+        sleep(3000);
+
         System.out.println("Video player loaded. Letting video play for 10 seconds...");
         
         // Sleep to simulate watching the video
